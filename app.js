@@ -1,21 +1,31 @@
+// dependencies
 const express = require("express");
 const app = express();
-
 const cors = require("cors");
+
+// controllers
+const shoesController = require("./controller/shoes.controller");
+const usersController = require("./controller/users.controller");
+const favoritesController = require("./controller/favorites.controller");
+
+// middleware
 app.use(cors());
 app.use(express.json());
 
-
-const shoesController = require("./controller/shoes.controller");
+// routes
 app.use("/shoes", shoesController);
+app.use("/users", usersController);
+app.use("/favorites", favoritesController);
 
-
-
+// healthcheck
 app.get("/", (req, res) => {
 	res.send("Welcome to Nikedas");
 });
 
+// 404
 app.get("*", (req, res) => {
 	res.status(404).json({ error: "Page not found" });
 });
+
+// export
 module.exports = app;
