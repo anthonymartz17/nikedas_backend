@@ -41,10 +41,22 @@ async function updateUser(id, { first_name, last_name, email, phone_number }) {
 		throw error;
 	}
 }
+async function deactiveUser(id) {
+	try {
+		const deactivatedUser = await db.one(
+			"UPDATE users SET isActive = false WHERE id = $1 RETURNING *",
+			id
+		);
+		return deactivatedUser;
+	} catch (error) {
+		throw error;
+	}
+}
 
 module.exports = {
 	getAllUsers,
 	createUser,
 	getUser,
 	updateUser,
+	deactiveUser,
 };
