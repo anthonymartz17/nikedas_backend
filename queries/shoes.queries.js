@@ -1,12 +1,15 @@
-const db = require("../db/dbConfig");
+// dependencies
+const db = require("../db/dbConfig.js");
 
-const getShoes = async () => {
+const getAllShoes = async () => {
 	try {
-		const shoes = await db.any("SELECT * FROM shoes");
-		return shoes;
+		const allShoes = await db.any("SELECT * FROM shoes");
+    return allShoes
 	} catch (error) {
-		throw error;
+		  throw error;
 	}
 };
 
-module.exports = { getShoes };
+module.exports = {
+  getAllShoes
+};
