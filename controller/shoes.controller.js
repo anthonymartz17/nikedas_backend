@@ -3,7 +3,7 @@ const express = require("express");
 const shoes = express.Router();
 
 // queries
-const { getAllShoes, getShoe, createShoe } = require("../queries/shoes.queries.js");
+const { getAllShoes, getShoe, createShoe, deleteShoe } = require("../queries/shoes.queries.js");
 
 // middleware
 // validation
@@ -40,6 +40,17 @@ shoes.post('/', async (req, res) => {
     res.status(200).json(newShoe);
   } catch(error) {
       res.status(400).json({ error: 'bad request'});
+  }
+})
+
+// delete shoe
+shoes.delete('/:id', async (req, res) => {
+  const { id } = req.params
+  try {
+    const deletedShoe = await deleteShoe(id)
+    res.status(200).json(deletedShoe)
+  } catch(error) {
+      res.status(404).json({error: `Shoe with id ${id} not found.`})
   }
 })
 
