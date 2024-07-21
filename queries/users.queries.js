@@ -1,6 +1,7 @@
+// dependencies
 const db = require("../db/dbConfig");
 
-async function geAllUsers() {
+async function getAllUsers() {
   try {
     const allUsers = await db.any("SELECT * FROM users");
     return allUsers;

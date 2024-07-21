@@ -10,4 +10,6 @@ const getAllShoes = async () => {
 	}
 };
 
-module.exports = { getAllShoes };
+module.exports = {
+  getAllShoes
+};
