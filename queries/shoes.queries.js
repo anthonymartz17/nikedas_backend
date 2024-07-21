@@ -28,8 +28,24 @@ async function createShoe(shoe) {
   }
 }
 
+async function deleteShoe(id) {
+  try {
+    // delete shoes from favorites
+    await db.any('DELETE FROM favorites WHERE shoe_id = $1', id)
+
+    // add deleted shoe to archive table
+
+    // delete shoe
+    const deletedShoe = await db.one('DELETE FROM shoes WHERE id = $1 RETURNING *', id);
+    return deletedShoe;
+  } catch(error) {
+      throw error
+  }
+}
+
 module.exports = {
   getAllShoes,
   getShoe,
-  createShoe
+  createShoe,
+  deleteShoe
 };
