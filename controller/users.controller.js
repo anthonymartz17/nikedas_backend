@@ -5,6 +5,7 @@ const users = express.Router();
 // queries
 const {
 	getAllUsers,
+	createUser,
 	getUser,
 	updateUser,
 } = require("../queries/users.queries.js");
@@ -19,6 +20,14 @@ users.get("/", async (req, res) => {
 	}
 });
 //create
+users.post("/", async (req, res) => {
+	try {
+		const user = await createUser(req.body);
+		res.status(200).json(user);
+	} catch (error) {
+		res.status(400).json({ error: "server error creating song" });
+	}
+});
 
 //show
 users.get("/:id", async (req, res) => {

@@ -9,6 +9,17 @@ async function getAllUsers() {
 		throw error;
 	}
 }
+async function createUser({ first_name, last_name, email, phone_number }) {
+	try {
+		const newUser = await db.one(
+			"INSERT INTO users (first_name, last_name, email, phone_number) VALUES ($1,$2,$3,$4) RETURNING *",
+			[first_name, last_name, email, phone_number]
+		);
+		return newUser;
+	} catch (error) {
+		throw error;
+	}
+}
 async function getUser(id) {
 	try {
 		const user = await db.one("SELECT * FROM users WHERE id = $1", id);
@@ -33,6 +44,7 @@ async function updateUser(id, { first_name, last_name, email, phone_number }) {
 
 module.exports = {
 	getAllUsers,
+	createUser,
 	getUser,
 	updateUser,
 };
