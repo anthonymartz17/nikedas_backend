@@ -3,7 +3,7 @@ const express = require("express");
 const shoes = express.Router();
 
 // queries
-const { getAllShoes, getShoe, createShoe, deleteShoe } = require("../queries/shoes.queries.js");
+const { getAllShoes, getShoe, createShoe, deleteShoe, updateShoe } = require("../queries/shoes.queries.js");
 
 // middleware
 // validation
@@ -43,13 +43,25 @@ shoes.post('/', async (req, res) => {
   }
 })
 
-// delete shoe
+// delete
 shoes.delete('/:id', async (req, res) => {
   const { id } = req.params
   try {
     const deletedShoe = await deleteShoe(id)
     res.status(200).json(deletedShoe)
   } catch(error) {
+      res.status(404).json({error: `Shoe with id ${id} not found.`})
+  }
+})
+
+// update
+shoes.put('/:id', async (req, res) => {
+  const { id } = req.params
+  try {
+    const updatedShoe = await updateShoe(id, req.body)
+    res.status(200).json(updatedShoe)
+  } catch(error) {
+      console.log(error)
       res.status(404).json({error: `Shoe with id ${id} not found.`})
   }
 })

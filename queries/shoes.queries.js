@@ -43,9 +43,19 @@ async function deleteShoe(id) {
   }
 }
 
+async function updateShoe(id, shoe) {
+  try {
+    const updatedShoe = await db.one('UPDATE shoes SET brand = $1, model = $2, size = $3, sku = $4, colorway = $5, category = $6, gender = $7, price = $8, description = $9, created_at = $10, updated_at = $11, img_url = $12, seller_id = $13 WHERE id = $14 RETURNING *', [shoe.brand, shoe.model, shoe.size, shoe.sku, shoe.colorway, shoe.category, shoe.gender, shoe.price, shoe.description, shoe.created_at, shoe.updated_at, shoe.img_url, shoe.seller_id, id])
+    return updatedShoe
+  } catch(error) {
+      throw error
+  }
+}
+
 module.exports = {
   getAllShoes,
   getShoe,
   createShoe,
-  deleteShoe
+  deleteShoe,
+  updateShoe
 };
