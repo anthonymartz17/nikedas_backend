@@ -24,10 +24,10 @@ CREATE TABLE
     colorway VARCHAR(100) NOT NULL,
     category VARCHAR(100) NOT NULL,
     gender VARCHAR(100) NOT NULL,
-    price INT NOT NULL,
+    price DECIMAL(7,2) NOT NULL,
     description TEXT NOT NULL,
-    created_at TIMESTAMP,
-    updated_at TIMESTAMP,
+    created_at TEXT,
+    updated_at TEXT,
     img_url VARCHAR(100),
     seller_id INT REFERENCES users(id)
   );
