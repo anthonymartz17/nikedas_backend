@@ -35,8 +35,8 @@ CREATE TABLE
 CREATE TABLE
   favorites
   (
-    id SERIAL PRIMARY KEY,
-    -- user_shoe_favorite CONCAT(user_id,'-',shoe_id),
+    id SERIAL,
+    user_shoe_favorite TEXT PRIMARY KEY,
     user_id INT REFERENCES users(id),
     shoe_id INT REFERENCES shoes(id)
   );
