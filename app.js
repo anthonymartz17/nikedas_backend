@@ -5,15 +5,17 @@ const cors = require("cors");
 
 // controllers
 const shoesController = require("./controller/shoes.controller");
+const usersController = require("./controller/users.controller");
+const favoritesController = require("./controller/favorites.controller");
 
 // middleware
 app.use(cors());
 app.use(express.json());
 
+// routes
 app.use("/shoes", shoesController);
-
-const usersController = require("./controller/users.controller");
 app.use("/users", usersController);
+app.use("/favorites", favoritesController);
 
 // healthcheck
 app.get("/", (req, res) => {
