@@ -18,7 +18,21 @@ async function getUser(id) {
 	}
 }
 
+async function updateUser(id, { first_name, last_name, email, phone_number }) {
+	console.log(id, "queries");
+	try {
+		const updatedUser = await db.one(
+			"UPDATE users SET first_name= $1,last_name= $2, email= $3, phone_number= $4 WHERE id = $5 RETURNING *",
+			[first_name, last_name, email, phone_number, id]
+		);
+		return updatedUser;
+	} catch (error) {
+		throw error;
+	}
+}
+
 module.exports = {
-  getAllUsers,
-  getUser,
+	getAllUsers,
+	getUser,
+	updateUser,
 };
