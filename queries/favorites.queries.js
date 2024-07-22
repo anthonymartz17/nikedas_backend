@@ -2,7 +2,7 @@
 const db = require("../db/dbConfig.js");
 
 // middleware
-
+// update to use middleware to route create favorite and delete favorite.
 
 
 async function getAllFavorites() {
