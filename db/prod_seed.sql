@@ -1,4 +1,4 @@
-\c nikedas_db;
+\c nikedas_prod;
 
 INSERT INTO
   users
