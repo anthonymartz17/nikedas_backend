@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS nikedas_db;
-CREATE DATABASE nikedas_db;
+DROP DATABASE IF EXISTS nikedas_prod;
+CREATE DATABASE nikedas_prod;
 
-\c nikedas_db;
+\c nikedas_prod;
 
 CREATE TABLE
   users
