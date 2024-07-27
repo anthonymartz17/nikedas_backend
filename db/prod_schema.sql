@@ -29,7 +29,8 @@ CREATE TABLE shoes (
     description TEXT,
     created_at TIMESTAMP,
     updated_at TIMESTAMP,
-    deleted_at TIMESTAMP
+    deleted_at TIMESTAMP,
+    seller_id INT REFERENCES users(id)
 );
 
 -- CREATE TABLE
