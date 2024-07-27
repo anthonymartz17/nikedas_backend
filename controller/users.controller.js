@@ -8,7 +8,7 @@ const {
 	createUser,
 	getUser,
 	updateUser,
-	deactiveUser,
+	deactivateUser,
 } = require("../queries/users.queries.js");
 
 // routes
@@ -56,7 +56,7 @@ users.put("/:id", async (req, res) => {
 users.put("/:id", async (req, res) => {
 	try {
 		const { id } = req.params;
-		const deactivatedUser = await deactiveUser(id);
+		const deactivatedUser = await deactivateUser(id);
 		res.status(200).json(deactivatedUser);
 	} catch (error) {
 		res.status(404).json({ msg: "User not found", error });
