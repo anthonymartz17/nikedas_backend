@@ -21,9 +21,11 @@ async function getShoe(id) {
 
 async function createShoe(shoe) {
   try {
-    const newShoe = await db.one('INSERT INTO shoes (brand, model, size, sku, colorway, category, gender, price, description, created_at, updated_at, img_url, seller_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING *', [shoe.brand, shoe.model, shoe.size, shoe.sku, shoe.colorway, shoe.category, shoe.gender, shoe.price, shoe.description, shoe.created_at, shoe.updated_at, shoe.img_url, shoe.seller_id]);
+    const newShoe = await db.one('INSERT INTO shoes (brand, model, size, sku, color, category, gender, price, description, created_at, updated_at, primary_img, secondary_img, seller_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) RETURNING *', [shoe.brand, shoe.model, shoe.size, shoe.sku, shoe.color, shoe.category, shoe.gender, shoe.price, shoe.description, shoe.created_at, shoe.updated_at, shoe.primary_img, shoe.secondary_img, shoe.seller_id]);
+    console.log(newShoe)
     return newShoe;
   } catch(error) {
+      console.log(error)
       throw error;
   }
 }
@@ -45,7 +47,7 @@ async function deleteShoe(id) {
 
 async function updateShoe(id, shoe) {
   try {
-    const updatedShoe = await db.one('UPDATE shoes SET brand = $1, model = $2, size = $3, sku = $4, colorway = $5, category = $6, gender = $7, price = $8, description = $9, created_at = $10, updated_at = $11, img_url = $12, seller_id = $13 WHERE id = $14 RETURNING *', [shoe.brand, shoe.model, shoe.size, shoe.sku, shoe.colorway, shoe.category, shoe.gender, shoe.price, shoe.description, shoe.created_at, shoe.updated_at, shoe.img_url, shoe.seller_id, id])
+    const updatedShoe = await db.one('UPDATE shoes SET brand = $1, model = $2, size = $3, sku = $4, color = $5, category = $6, gender = $7, price = $8, description = $9, created_at = $10, updated_at = $11, primary_img = $12, secondary_img=$13 , seller_id = $14 WHERE id = $15 RETURNING *', [shoe.brand, shoe.model, shoe.size, shoe.sku, shoe.color, shoe.category, shoe.gender, shoe.price, shoe.description, shoe.created_at, shoe.updated_at, shoe.primary_img, shoe.secondary_img, shoe.seller_id, id])
     return updatedShoe
   } catch(error) {
       throw error

@@ -33,7 +33,7 @@ shoes.get('/:id', async (req, res) => {
 
 // create
 shoes.post('/', async (req, res) => {
-    // res.status(200).json({message: "create route"});
+  console.log('controller', req.body);
 
   try {
     const newShoe = await createShoe(req.body);
