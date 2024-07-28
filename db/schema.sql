@@ -12,7 +12,7 @@ CREATE TABLE
     email VARCHAR(255),
     phone_number VARCHAR(25),
     about_store TEXT,
-    isActive BOOLEAN
+    is_active BOOLEAN
   );
 
 CREATE TABLE shoes (
