@@ -12,7 +12,7 @@ async function getAllUsers() {
 async function createUser({ first_name, last_name, email, phone_number }) {
 	try {
 		const newUser = await db.one(
-			"INSERT INTO users (first_name, last_name, email, phone_number) VALUES ($1,$2,$3,$4) RETURNING *",
+			"INSERT INTO users (first_name, last_name, email, phone_number) VALUES ($1, $2, $3, $4) RETURNING *",
 			[first_name, last_name, email, phone_number]
 		);
 		return newUser;
@@ -29,12 +29,11 @@ async function getUser(id) {
 	}
 }
 
-async function updateUser(id, { first_name, last_name, email, phone_number }) {
-	console.log(id, "queries");
+async function updateUser(id, { first_name, last_name, email, phone_number, about_store, is_active }) {
 	try {
 		const updatedUser = await db.one(
-			"UPDATE users SET first_name= $1,last_name= $2, email= $3, phone_number= $4 WHERE id = $5 RETURNING *",
-			[first_name, last_name, email, phone_number, id]
+			"UPDATE users SET first_name=$1,last_name=$2, email=$3, phone_number=$4, about_store=$5, is_active=$6 WHERE id = $7 RETURNING *",
+			[first_name, last_name, email, phone_number, about_store, is_active, id]
 		);
 		return updatedUser;
 	} catch (error) {

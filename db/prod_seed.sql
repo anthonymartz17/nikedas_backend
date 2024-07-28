@@ -2,7 +2,7 @@
 
 INSERT INTO
   users
-  (first_name, last_name, email, phone_number, about_store, isActive)
+  (first_name, last_name, email, phone_number, about_store, is_active)
 VALUES
   ('John', 'Doe', 'john.doe@example.com', '123-456-7890', 'Find the dopest kicks in the best condition' ,'true'),
   ('Jane', 'Smith', 'jane.smith@example.com', '234-567-8901', 'Find the dopest kicks in the best condition' ,'true'),
