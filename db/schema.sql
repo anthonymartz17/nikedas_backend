@@ -31,7 +31,7 @@ CREATE TABLE shoes (
     created_at TIMESTAMP,
     updated_at TIMESTAMP,
     deleted_at TIMESTAMP,
-    seller_id INT REFERENCES users(id)
+    seller_id INT REFERENCES users(uid)
 );
 
 -- CREATE TABLE
