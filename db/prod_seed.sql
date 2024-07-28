@@ -2,18 +2,18 @@
 
 INSERT INTO
   users
-  (first_name, last_name, email, phone_number)
+  (first_name, last_name, email, phone_number, about_store, isActive)
 VALUES
-  ('John', 'Doe', 'john.doe@example.com', '123-456-7890', "Find the dopest kicks in the best condition" ,"true"),
-  ('Jane', 'Smith', 'jane.smith@example.com', '234-567-8901', "Find the dopest kicks in the best condition" ,"true"),
-  ('Michael', 'Johnson', 'michael.johnson@example.com', '345-678-9012', "Find the dopest kicks in the best condition" ,"true"),
-  ('Emily', 'Davis', 'emily.davis@example.com', '456-789-0123', "Find the dopest kicks in the best condition" ,"true"),
-  ('Christopher', 'Brown', 'christopher.brown@example.com', '567-890-1234', "Find the dopest kicks in the best condition" ,"true"),
-  ('Amanda', 'Wilson', 'amanda.wilson@example.com', '678-901-2345', "Find the dopest kicks in the best condition" ,"true"),
-  ('Joshua', 'Moore', 'joshua.moore@example.com', '789-012-3456', "Find the dopest kicks in the best condition" ,"true"),
-  ('Jessica', 'Taylor', 'jessica.taylor@example.com', '890-123-4567', "Find the dopest kicks in the best condition" ,"true"),
-  ('Matthew', 'Anderson', 'matthew.anderson@example.com', '901-234-5678', "Find the dopest kicks in the best condition" ,"true"),
-  ('Sarah', 'Thomas', 'sarah.thomas@example.com', '012-345-6789', "Find the dopest kicks in the best condition" ,"true");
+  ('John', 'Doe', 'john.doe@example.com', '123-456-7890', 'Find the dopest kicks in the best condition' ,'true'),
+  ('Jane', 'Smith', 'jane.smith@example.com', '234-567-8901', 'Find the dopest kicks in the best condition' ,'true'),
+  ('Michael', 'Johnson', 'michael.johnson@example.com', '345-678-9012', 'Find the dopest kicks in the best condition' ,'true'),
+  ('Emily', 'Davis', 'emily.davis@example.com', '456-789-0123', 'Find the dopest kicks in the best condition' ,'true'),
+  ('Christopher', 'Brown', 'christopher.brown@example.com', '567-890-1234', 'Find the dopest kicks in the best condition' ,'true'),
+  ('Amanda', 'Wilson', 'amanda.wilson@example.com', '678-901-2345', 'Find the dopest kicks in the best condition' ,'true'),
+  ('Joshua', 'Moore', 'joshua.moore@example.com', '789-012-3456', 'Find the dopest kicks in the best condition' ,'true'),
+  ('Jessica', 'Taylor', 'jessica.taylor@example.com', '890-123-4567', 'Find the dopest kicks in the best condition' ,'true'),
+  ('Matthew', 'Anderson', 'matthew.anderson@example.com', '901-234-5678', 'Find the dopest kicks in the best condition' ,'true'),
+  ('Sarah', 'Thomas', 'sarah.thomas@example.com', '012-345-6789', 'Find the dopest kicks in the best condition' ,'true');
 
 INSERT INTO
   shoes 
