@@ -9,11 +9,16 @@ async function getAllUsers() {
 		throw error;
 	}
 }
-async function createUser({ first_name, last_name, email, phone_number }) {
+async function createUser({ uid, first_name, last_name, email, phone_number }) {
 	try {
 		const newUser = await db.one(
+<<<<<<< HEAD
 			"INSERT INTO users (first_name, last_name, email, phone_number) VALUES ($1, $2, $3, $4) RETURNING *",
 			[first_name, last_name, email, phone_number]
+=======
+			"INSERT INTO users (uid,first_name, last_name, email, phone_number) VALUES ($1,$2,$3,$4,$5) RETURNING *",
+			[uid, first_name, last_name, email, phone_number]
+>>>>>>> main
 		);
 		return newUser;
 	} catch (error) {
