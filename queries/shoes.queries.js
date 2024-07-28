@@ -55,10 +55,20 @@ async function updateShoe(id, shoe) {
   }
 }
 
+async function getShoesBySellerId(id) {
+  try {
+    const sellerShoes = await db.any("SELECT * FROM shoes WHERE seller_id = $1", id)
+    return sellerShoes;
+  } catch(error) {
+      throw error
+  }
+}
+
 module.exports = {
   getAllShoes,
   getShoe,
   createShoe,
   deleteShoe,
-  updateShoe
+  updateShoe,
+  getShoesBySellerId
 };

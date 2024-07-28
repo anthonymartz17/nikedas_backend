@@ -3,7 +3,7 @@ const express = require("express");
 const shoes = express.Router();
 
 // queries
-const { getAllShoes, getShoe, createShoe, deleteShoe, updateShoe } = require("../queries/shoes.queries.js");
+const { getAllShoes, getShoe, createShoe, deleteShoe, updateShoe, getShoesBySellerId } = require("../queries/shoes.queries.js");
 
 // middleware
 // validation
@@ -66,5 +66,15 @@ shoes.put('/:id', async (req, res) => {
   }
 })
 
+// seller index
+shoes.get("/seller/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const sellerShoes = await getShoesBySellerId(id)
+    res.status(200).json(sellerShoes)
+  } catch (error) {
+      res.status(400).json({error: "No Results"})
+  }
+})
 
 module.exports = shoes;
