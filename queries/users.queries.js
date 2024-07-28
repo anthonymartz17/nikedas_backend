@@ -12,13 +12,8 @@ async function getAllUsers() {
 async function createUser({ uid, first_name, last_name, email, phone_number }) {
 	try {
 		const newUser = await db.one(
-<<<<<<< HEAD
-			"INSERT INTO users (first_name, last_name, email, phone_number) VALUES ($1, $2, $3, $4) RETURNING *",
-			[first_name, last_name, email, phone_number]
-=======
 			"INSERT INTO users (uid,first_name, last_name, email, phone_number) VALUES ($1,$2,$3,$4,$5) RETURNING *",
 			[uid, first_name, last_name, email, phone_number]
->>>>>>> main
 		);
 		return newUser;
 	} catch (error) {
@@ -34,18 +29,19 @@ async function getUser(id) {
 	}
 }
 
-async function updateUser(id, { first_name, last_name, email, phone_number, about_store, is_active }) {
+async function updateUser(id, { first_name, last_name, email, phone_number }) {
+	console.log(id, "queries");
 	try {
 		const updatedUser = await db.one(
-			"UPDATE users SET first_name=$1,last_name=$2, email=$3, phone_number=$4, about_store=$5, is_active=$6 WHERE id = $7 RETURNING *",
-			[first_name, last_name, email, phone_number, about_store, is_active, id]
+			"UPDATE users SET first_name= $1,last_name= $2, email= $3, phone_number= $4 WHERE id = $5 RETURNING *",
+			[first_name, last_name, email, phone_number, id]
 		);
 		return updatedUser;
 	} catch (error) {
 		throw error;
 	}
 }
-async function deactivateUser(id) {
+async function deactiveUser(id) {
 	try {
 		const deactivatedUser = await db.one(
 			"UPDATE users SET isActive = false WHERE id = $1 RETURNING *",
@@ -62,5 +58,5 @@ module.exports = {
 	createUser,
 	getUser,
 	updateUser,
-	deactivateUser,
+	deactiveUser,
 };
