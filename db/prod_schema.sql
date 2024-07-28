@@ -10,7 +10,9 @@ CREATE TABLE
     first_name VARCHAR(100),
     last_name VARCHAR(100),
     email VARCHAR(255),
-    phone_number VARCHAR(25)
+    phone_number VARCHAR(25),
+    about_store TEXT,
+    is_active BOOLEAN
   );
 
 CREATE TABLE shoes (
