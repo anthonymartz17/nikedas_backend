@@ -3,15 +3,16 @@ CREATE DATABASE nikedas_db;
 
 \c nikedas_db;
 
-CREATE TABLE
-  users
-  (
+
+CREATE TABLE users (
     id SERIAL PRIMARY KEY,
+    uid VARCHAR(255) UNIQUE NOT NULL,
     first_name VARCHAR(100),
     last_name VARCHAR(100),
-    email VARCHAR(255),
+    email VARCHAR(255) NOT NULL UNIQUE,
     phone_number VARCHAR(25)
-  );
+);
+
 
 CREATE TABLE shoes (
     id SERIAL PRIMARY KEY,
