@@ -3,7 +3,8 @@ const db = require("../db/dbConfig.js");
 
 async function getAllShoes() {
 	try {
-		const allShoes = await db.any("SELECT * FROM shoes");
+    const allShoes = await db.any("SELECT * FROM shoes");
+   
     return allShoes
 	} catch (error) {
 		  throw error;
