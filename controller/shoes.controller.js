@@ -15,7 +15,7 @@ shoes.get("/", async (req, res) => {
     const allShoes = await getAllShoes();
 		res.status(200).json(allShoes);
 	} catch(error) {
-		  res.status(404).json({error:"Resource not found"});
+		  res.status(404).json({error:"Resource not found",msg:error});
 	}
 });
 
