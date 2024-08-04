@@ -22,7 +22,7 @@ async function createUser({ uid, first_name, last_name, email, phone_number }) {
 }
 async function getUser(id) {
 	try {
-		const user = await db.one("SELECT * FROM users WHERE id = $1", id);
+		const user = await db.one("SELECT * FROM users WHERE uid = $1", id);
 		return user;
 	} catch (error) {
 		throw error;
@@ -33,7 +33,7 @@ async function updateUser(id, { first_name, last_name, email, phone_number }) {
 	console.log(id, "queries");
 	try {
 		const updatedUser = await db.one(
-			"UPDATE users SET first_name= $1,last_name= $2, email= $3, phone_number= $4 WHERE id = $5 RETURNING *",
+			"UPDATE users SET first_name= $1,last_name= $2, email= $3, phone_number= $4 WHERE uid = $5 RETURNING *",
 			[first_name, last_name, email, phone_number, id]
 		);
 		return updatedUser;
@@ -44,7 +44,7 @@ async function updateUser(id, { first_name, last_name, email, phone_number }) {
 async function deactiveUser(id) {
 	try {
 		const deactivatedUser = await db.one(
-			"UPDATE users SET isActive = false WHERE id = $1 RETURNING *",
+			"UPDATE users SET isActive = false WHERE uid = $1 RETURNING *",
 			id
 		);
 		return deactivatedUser;
