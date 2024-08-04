@@ -20,7 +20,6 @@ CREATE TABLE shoes (
     model VARCHAR(100),
     size DECIMAL(3, 1),
     product_number VARCHAR(50),
-    sku INT,
     color VARCHAR(100),
     category VARCHAR(50),
     primary_img TEXT,
