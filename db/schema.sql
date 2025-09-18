@@ -11,6 +11,7 @@ CREATE TABLE users (
     email VARCHAR(255) NOT NULL UNIQUE,
     phone_number VARCHAR(25),
     about_store TEXT,
+    account_type VARCHAR(100) NOT NULL, -- 'seller' or 'buyer'
     is_active BOOLEAN
 );
 
@@ -33,9 +34,4 @@ CREATE TABLE shoes (
     seller_id VARCHAR(255) REFERENCES users(uid)
 );
 
-CREATE TABLE favorites (
-    id SERIAL PRIMARY KEY,
-    user_id INT REFERENCES users(id),
-    shoe_id INT REFERENCES shoes(id),
-    UNIQUE(user_id, shoe_id)
-);
+
