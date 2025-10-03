@@ -12,7 +12,7 @@ CREATE TABLE users (
     phone_number VARCHAR(25),
     is_active BOOLEAN,
     role VARCHAR(20) DEFAULT 'customer', -- 'customer', 'admin'
-    created_at TIMESTAMP DEFAULT NOW()
+    created_at TIMESTAMP DEFAULT NOW(),
     updated_at TIMESTAMP DEFAULT NOW()
 
 );
@@ -34,8 +34,8 @@ CREATE TABLE categories(
 
 CREATE TABLE colors(
     id SERIAL PRIMARY KEY,
-    name VARCHAR(50) UNIQUE NOT NULL;
-);
+    name VARCHAR(50) UNIQUE NOT NULL
+); 
 
 CREATE TABLE sizes (
     id SERIAL PRIMARY KEY,
@@ -51,7 +51,7 @@ CREATE TABLE products (
     audience_id INT REFERENCES audiences(id) ON DELETE CASCADE,
     name VARCHAR(150) NOT NULL,  -- e.g. "Air Zoom Pegasus"
     product_number VARCHAR(50) UNIQUE,  
-    category_id INT REFERENCES ON DELETE CASCADE,
+    category_id INT REFERENCES categories(id) ON DELETE CASCADE,
     price DECIMAL(10, 2),
     description TEXT,
     created_at TIMESTAMP DEFAULT NOW(),
@@ -62,10 +62,20 @@ CREATE TABLE products (
 CREATE TABLE product_variants (
   id SERIAL PRIMARY KEY,
   product_id INT REFERENCES products(id) ON DELETE CASCADE,
-  color VARCHAR(50) NOT NULL,
-  size VARCHAR(10) NOT NULL,
+  color_id INT REFERENCES colors(id) ON DELETE CASCADE,
+  created_at TIMESTAMP DEFAULT NOW(),
+  updated_at TIMESTAMP DEFAULT NOW(),
+  UNIQUE(product_id, color_id)
+);
+
+CREATE TABLE variant_sizes (
+  id SERIAL PRIMARY KEY,
+  variant_id INT REFERENCES product_variants(id) ON DELETE CASCADE,
+  size_id INT REFERENCES sizes(id) ON DELETE CASCADE,
   stock INT NOT NULL DEFAULT 0,
-  UNIQUE(product_id, color, size)
+  created_at TIMESTAMP DEFAULT NOW(),
+  updated_at TIMESTAMP DEFAULT NOW(),
+  UNIQUE(variant_id, size_id)
 );
 
 
@@ -75,6 +85,7 @@ CREATE TABLE product_variants (
   image_url TEXT NOT NULL,
   is_main BOOLEAN DEFAULT false -- to mark the primary display image
 );
+
 
 
 -- order_statuses (
