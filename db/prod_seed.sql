@@ -1,74 +1,142 @@
 \c nikedas_prod;
 
-INSERT INTO
-  users
-  (uid, first_name, last_name, email, phone_number, about_store, is_active)
+-- Users
+INSERT INTO users (uid, first_name, last_name, email, phone_number, is_active, role)
 VALUES
-  ( '1' ,'John', 'Doe', 'john.doe@example.com', '123-456-7890', 'Find the dopest kicks in the best condition' ,'true'),
-  ( '2' ,'Jane', 'Smith', 'jane.smith@example.com', '234-567-8901', 'Find the dopest kicks in the best condition' ,'true'),
-  ( '3' ,'Michael', 'Johnson', 'michael.johnson@example.com', '345-678-9012', 'Find the dopest kicks in the best condition' ,'true'),
-  ( '4' ,'Emily', 'Davis', 'emily.davis@example.com', '456-789-0123', 'Find the dopest kicks in the best condition' ,'true'),
-  ( '5' ,'Christopher', 'Brown', 'christopher.brown@example.com', '567-890-1234', 'Find the dopest kicks in the best condition' ,'true'),
-  ( '6' ,'Amanda', 'Wilson', 'amanda.wilson@example.com', '678-901-2345', 'Find the dopest kicks in the best condition' ,'true'),
-  ( '7' ,'Joshua', 'Moore', 'joshua.moore@example.com', '789-012-3456', 'Find the dopest kicks in the best condition' ,'true'),
-  ( '8' ,'Jessica', 'Taylor', 'jessica.taylor@example.com', '890-123-4567', 'Find the dopest kicks in the best condition' ,'true'),
-  ( '9' ,'Matthew', 'Anderson', 'matthew.anderson@example.com', '901-234-5678', 'Find the dopest kicks in the best condition' ,'true'),
-  ( '10' ,'Sarah', 'Thomas', 'sarah.thomas@example.com', '012-345-6789', 'Find the dopest kicks in the best condition' ,'true');
+('1','John','Doe','john.doe@example.com','123-456-7890', TRUE,'customer'),
+('2','Jane','Smith','jane.smith@example.com','234-567-8901', TRUE,'customer'),
+('3','Michael','Johnson','michael.johnson@example.com','345-678-9012', TRUE,'customer'),
+('4','Emily','Davis','emily.davis@example.com','456-789-0123', TRUE,'customer'),
+('5','Christopher','Brown','christopher.brown@example.com','567-890-1234', TRUE,'customer'),
+('6','Amanda','Wilson','amanda.wilson@example.com','678-901-2345', TRUE,'customer'),
+('7','Joshua','Moore','joshua.moore@example.com','789-012-3456', TRUE,'customer'),
+('8','Jessica','Taylor','jessica.taylor@example.com','890-123-4567', TRUE,'customer'),
+('9','Matthew','Anderson','matthew.anderson@example.com','901-234-5678', TRUE,'customer'),
+('10','Sarah','Thomas','sarah.thomas@example.com','012-345-6789', TRUE,'customer');
 
+-- Brands
+INSERT INTO brands (name)
+VALUES ('Nike'), ('Adidas');
 
+-- Audiences
+INSERT INTO audiences (name)
+VALUES ('Men'), ('Women'), ('Kids'), ('Little Kids'), ('Youth');
 
-  
-INSERT INTO
-  shoes 
-  (
-    brand, model, size, product_number, sku, color, category, primary_img, secondary_img, gender, price, description, created_at, updated_at, deleted_at, seller_id
-  ) 
+-- Categories
+INSERT INTO categories (name)
+VALUES ('Basketball'), ('Running');
+
+-- Colors
+INSERT INTO colors (name)
 VALUES
-  ('Nike', 'Air Jordan 1 low', 9, '53558161', 1001, 'Red/Black', 'basketball', 
-  'https://images.footlocker.com/is/image/EBFL2/53558161?wid=883&hei=883&fmt=png-alpha', 
-  '{}', 'men', 115, 'Classic basketball shoes.', '2023-07-13 14:23:15', '2023-07-16 10:15:42', NULL, '1'),
+('Red/Black'),('Black/Yellow'),('White/Black'),('Grey/White/Black'),
+('Black/Grey/White'),('Black/Black/Black'),('Racer Blue/Hyper Pink/Bright Crimson'),
+('Viotech/White/Black'),('Grey'),('White');
 
-  ('Nike', 'Air Jordan 1 low', 10, '53558161', 1001, 'Black/Yellow', 'basketball', 
-  'https://images.footlocker.com/is/image/EBFL2/53558072?wid=883&hei=883&fmt=png-alpha', 
-  '{}', 'men', 115, 'Classic basketball shoes.', '2023-07-13 14:23:15', '2023-07-16 10:15:42', NULL,'1'),
+-- Sizes
+-- Men
+INSERT INTO sizes (name, audience_id) VALUES
+('4',1),('7',1),('8',1),('9',1),('9.5',1),('10',1);
+-- Women
+INSERT INTO sizes (name, audience_id) VALUES
+('6',2),('7',2),('8',2);
 
-  ('Nike', 'Air Jordan 1 low', 9.5, '53558161', 1001, 'White/Black', 'basketball', 
-  'https://images.footlocker.com/is/image/EBFL2/53558132?wid=883&hei=883&fmt=png-alpha', 
-  '{}', 'men', 115, 'Classic basketball shoes.', '2023-07-13 14:23:15', '2023-07-16 10:15:42', NULL,'1'),
+-- Products
+INSERT INTO products (brand_id, audience_id, category_id, name, product_number, price, description)
+VALUES
+-- Nike Air Jordan 1 Low
+(1,1,1,'Air Jordan 1 Low','53558161',115.0,'Classic basketball shoes.'),
+-- Nike Jordan AJ 1 Mid SE
+(1,1,1,'Jordan AJ 1 Mid SE','M9652001',150.0,'Classic basketball shoes.'),
+-- Nike Air Max 270
+(1,2,2,'Air Max 270','H6789006',150.0,'Classic running shoes.'),
+-- Nike Air Max Plus
+(1,2,2,'Air Max Plus','D3670001',150.0,'Classic running shoes.'),
+-- Adidas Ultraboost 1.0 DNA
+(2,1,2,'Ultraboost 1.0 DNA','HQ4199',180.0,'Comfortable running shoes.'),
+-- Nike Jordan Air Jordan 4 Retro Remastered
+(1,1,1,'Jordan Air Jordan 4 Retro Remastered','Q8213103',180.0,'Comfortable basketball shoes.');
 
-  ('Nike', 'Jordan AJ 1 Mid SE', 7, 'M9652001', 1002, 'Grey/White/Black', 'basketball', 
-  'https://images.footlocker.com/is/image/EBFL2/B9911001?wid=883&hei=883&fmt=png-alpha', 
-  '{}', 'men', 150.0, 'Classic basketball shoes.', '2023-07-14 09:12:33', '2023-07-18 13:27:51', NULL,'2'),
+-- Product Variants
+-- Air Jordan 1 Low
+INSERT INTO product_variants (product_id, color_id, size_id, stock) VALUES
+(1,1,4,10), -- Red/Black, size 9
+(1,2,6,5),  -- Black/Yellow, size 10
+(1,3,5,8);  -- White/Black, size 9.5
 
-  ('Nike', 'Jordan AJ 1 Mid SE', 8, 'M9652001', 1002, 'Black/Grey/White', 'basketball', 
-  'https://images.footlocker.com/is/image/EBFL2/M9652001?wid=883&hei=883&fmt=png-alpha', 
-  '{}', 'men', 150.0, 'Classic basketball shoes.', '2023-07-14 09:12:33', '2023-07-18 13:27:51', NULL,'3'),
+-- Jordan AJ 1 Mid SE
+INSERT INTO product_variants (product_id, color_id, size_id, stock) VALUES
+(2,4,2,7), -- Grey/White/Black, size 7
+(2,5,3,3); -- Black/Grey/White, size 8
 
-  ('Nike', 'Air Max 270', 7, 'H6789006', 1002, 'Black/Black/Black', 'Running', 
-  'https://images.footlocker.com/is/image/EBFL2/H6789006_a1?wid=581&hei=581&fmt=png-alpha', 
-  '{}', 'women', 150.0, 'Classic running shoes.', '2023-07-14 09:12:33', '2023-07-18 13:27:51', NULL,'2'),
+-- Air Max 270
+INSERT INTO product_variants (product_id, color_id, size_id, stock) VALUES
+(3,6,1,6), -- Black/Black/Black, size 6
+(3,7,2,4); -- Racer Blue/Hyper Pink/Bright Crimson, size 7
 
-  ('Nike', 'Air Max 270', 6, 'H6789006', 1002, 'Racer Blue/Hyper Pink/Bright Crimson', 'Running', 
-  'https://images.footlocker.com/is/image/EBFL2/Z4407600_a1?wid=581&hei=581&fmt=png-alpha', 
-  ARRAY['https://images.footlocker.com/is/image/EBFL2/Z4407600_a1?wid=581&hei=581&fmt=png-alpha', 'https://images.footlocker.com/is/image/EBFL2/H6789006_a2?wid=581&hei=581&fmt=png-alpha', 'https://images.footlocker.com/is/image/EBFL2/H6789006_a3?wid=581&hei=581&fmt=png-alpha', 'https://images.footlocker.com/is/image/EBFL2/H6789006_a4?wid=581&hei=581&fmt=png-alpha'], 
-  'women', 150.0, 'Classic running shoes.', '2023-07-14 09:12:33', '2023-07-18 13:27:51', NULL,'2'),
+-- Air Max Plus
+INSERT INTO product_variants (product_id, color_id, size_id, stock) VALUES
+(4,8,1,5), -- Viotech/White/Black, size 6
+(4,8,2,7); -- Viotech/White/Black, size 7
 
-  ('Nike', 'Air Max Plus', 6, 'D3670001', 1002, 'Viotech/White/Black', 'Running', 
-  'https://images.footlocker.com/is/image/EBFL2/X8954001_a1?wid=581&hei=581&fmt=png-alpha', 
-  ARRAY['https://images.footlocker.com/is/image/EBFL2/X8954001_a1?wid=581&hei=581&fmt=png-alpha', 'https://images.footlocker.com/is/image/EBFL2/X8954001_a2?wid=581&hei=581&fmt=png-alpha', 'https://images.footlocker.com/is/image/EBFL2/X8954001_a3?wid=581&hei=581&fmt=png-alpha', 'https://images.footlocker.com/is/image/EBFL2/X8954001_a4?wid=581&hei=581&fmt=png-alpha'], 
-  'women', 150.0, 'Classic running shoes.', '2023-07-14 09:12:33', '2023-07-18 13:27:51', NULL,'3'),
+-- Ultraboost 1.0 DNA
+INSERT INTO product_variants (product_id, color_id, size_id, stock) VALUES
+(5,9,6,3); -- Grey, size 10
 
-  ('Nike', 'Air Max Plus', 7, 'D3670001', 1002, 'Viotech/White/Black', 'Running', 
-  'https://images.footlocker.com/is/image/EBFL2/D3670001_a1?wid=581&hei=581&fmt=png-alpha', 
-  ARRAY['https://images.footlocker.com/is/image/EBFL2/D3670001_a1?wid=581&hei=581&fmt=png-alpha', 'https://images.footlocker.com/is/image/EBFL2/D3670001_a2?wid=581&hei=581&fmt=png-alpha', 'https://images.footlocker.com/is/image/EBFL2/D3670001_a3?wid=581&hei=581&fmt=png-alpha', 'https://images.footlocker.com/is/image/EBFL2/D3670001_a4?wid=581&hei=581&fmt=png-alpha'], 
-  'women', 150.0, 'Classic running shoes.', '2023-07-14 09:12:33', '2023-07-18 13:27:51', NULL,'10'),
+-- Jordan Air Jordan 4 Retro
+INSERT INTO product_variants (product_id, color_id, size_id, stock) VALUES
+(6,10,4,2); -- White, size 9
 
-  ('Adidas', 'Ultraboost 1.0 DNA', 10, 'HQ4199', 1003, 'Grey', 'running', 
-  'https://images.footlocker.com/is/image/EBFL2/HQ4199_a1?wid=581&hei=581&fmt=png-alpha', 
-  ARRAY['https://images.footlocker.com/is/image/EBFL2/HQ4199_a1?wid=581&hei=581&fmt=png-alpha', 'https://images.footlocker.com/is/image/EBFL2/HQ4199_a2?wid=581&hei=581&fmt=png-alpha', 'https://images.footlocker.com/is/image/EBFL2/HQ4199_a4?wid=581&hei=581&fmt=png-alpha', 'https://images.footlocker.com/is/image/EBFL2/HQ4199_a5?wid=581&hei=581&fmt=png-alpha'], 
-  'men', 180.0, 'Comfortable running shoes.', '2023-07-15 09:12:33', '2023-07-18 13:27:51', NULL, '5'),
+-- Product Images (main + extra)
+-- Air Jordan 1 Low Red/Black
+INSERT INTO product_images (variant_id, image_url, is_main) VALUES
+(1,'https://images.footlocker.com/is/image/EBFL2/53558161?wid=883&hei=883&fmt=png-alpha',TRUE);
 
-  ('Nike', 'Jordan Air Jordan 4 Retro Remastered', 4, 'Q8213103', 1003, 'White', 'basketball', 
-  'https://images.footlocker.com/is/image/EBFL2/Q8213103_01?wid=581&hei=581&fmt=png-alpha', 
-  ARRAY['https://images.footlocker.com/is/image/EBFL2/Q8213103_01?wid=581&hei=581&fmt=png-alpha', 'https://images.footlocker.com/is/image/EBFL2/Q8213103_02?wid=581&hei=581&fmt=png-alpha', 'https://images.footlocker.com/is/image/EBFL2/Q8213103_03?wid=581&hei=581&fmt=png-alpha', 'https://images.footlocker.com/is/image/EBFL2/Q8213103_04?wid=581&hei=581&fmt=png-alpha'], 
-  'men', 180.0, 'Comfortable basketball shoes.', '2023-07-15 09:12:33', '2023-07-18 13:27:51', NULL, '1');
+-- Air Jordan 1 Low Black/Yellow
+INSERT INTO product_images (variant_id, image_url, is_main) VALUES
+(2,'https://images.footlocker.com/is/image/EBFL2/53558072?wid=883&hei=883&fmt=png-alpha',TRUE);
+
+-- Air Jordan 1 Low White/Black
+INSERT INTO product_images (variant_id, image_url, is_main) VALUES
+(3,'https://images.footlocker.com/is/image/EBFL2/53558132?wid=883&hei=883&fmt=png-alpha',TRUE);
+
+-- Jordan AJ 1 Mid SE Grey/White/Black
+INSERT INTO product_images (variant_id, image_url, is_main) VALUES
+(4,'https://images.footlocker.com/is/image/EBFL2/B9911001?wid=883&hei=883&fmt=png-alpha',TRUE);
+
+-- Jordan AJ 1 Mid SE Black/Grey/White
+INSERT INTO product_images (variant_id, image_url, is_main) VALUES
+(5,'https://images.footlocker.com/is/image/EBFL2/M9652001?wid=883&hei=883&fmt=png-alpha',TRUE);
+
+-- Air Max 270 Black/Black/Black
+INSERT INTO product_images (variant_id, image_url, is_main) VALUES
+(6,'https://images.footlocker.com/is/image/EBFL2/H6789006_a1?wid=581&hei=581&fmt=png-alpha',TRUE);
+
+-- Air Max 270 Racer Blue/Hyper Pink/Bright Crimson (multiple images)
+INSERT INTO product_images (variant_id, image_url, is_main) VALUES
+(7,'https://images.footlocker.com/is/image/EBFL2/Z4407600_a1?wid=581&hei=581&fmt=png-alpha',TRUE),
+(7,'https://images.footlocker.com/is/image/EBFL2/Z4407600_a1?wid=581&hei=581&fmt=png-alpha',FALSE),
+(7,'https://images.footlocker.com/is/image/EBFL2/H6789006_a2?wid=581&hei=581&fmt=png-alpha',FALSE),
+(7,'https://images.footlocker.com/is/image/EBFL2/H6789006_a3?wid=581&hei=581&fmt=png-alpha',FALSE),
+(7,'https://images.footlocker.com/is/image/EBFL2/H6789006_a4?wid=581&hei=581&fmt=png-alpha',FALSE);
+
+-- Air Max Plus Viotech/White/Black
+INSERT INTO product_images (variant_id, image_url, is_main) VALUES
+(8,'https://images.footlocker.com/is/image/EBFL2/X8954001_a1?wid=581&hei=581&fmt=png-alpha',TRUE),
+(8,'https://images.footlocker.com/is/image/EBFL2/X8954001_a2?wid=581&hei=581&fmt=png-alpha',FALSE),
+(8,'https://images.footlocker.com/is/image/EBFL2/X8954001_a3?wid=581&hei=581&fmt=png-alpha',FALSE),
+(8,'https://images.footlocker.com/is/image/EBFL2/X8954001_a4?wid=581&hei=581&fmt=png-alpha',FALSE);
+
+-- Ultraboost 1.0 DNA Grey
+INSERT INTO product_images (variant_id, image_url, is_main) VALUES
+(9,'https://images.footlocker.com/is/image/EBFL2/HQ4199_a1?wid=581&hei=581&fmt=png-alpha',TRUE),
+(9,'https://images.footlocker.com/is/image/EBFL2/HQ4199_a2?wid=581&hei=581&fmt=png-alpha',FALSE),
+(9,'https://images.footlocker.com/is/image/EBFL2/HQ4199_a4?wid=581&hei=581&fmt=png-alpha',FALSE),
+(9,'https://images.footlocker.com/is/image/EBFL2/HQ4199_a5?wid=581&hei=581&fmt=png-alpha',FALSE);
+
+-- Jordan Air Jordan 4 Retro White
+INSERT INTO product_images (variant_id, image_url, is_main) VALUES
+(10,'https://images.footlocker.com/is/image/EBFL2/Q8213103_01?wid=581&hei=581&fmt=png-alpha',TRUE),
+(10,'https://images.footlocker.com/is/image/EBFL2/Q8213103_02?wid=581&hei=581&fmt=png-alpha',FALSE),
+(10,'https://images.footlocker.com/is/image/EBFL2/Q8213103_03?wid=581&hei=581&fmt=png-alpha',FALSE),
+(10,'https://images.footlocker.com/is/image/EBFL2/Q8213103_04?wid=581&hei=581&fmt=png-alpha',FALSE);

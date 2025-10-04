@@ -28,7 +28,7 @@ users.post("/", async (req, res) => {
 	} catch (error) {
 		res
 			.status(400)
-			.json({ error: "server error creating user", msg: error.detail });
+			.json({ error: "server error creating user", msg:error.message});
 	}
 });
 
